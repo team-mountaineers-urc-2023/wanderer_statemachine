@@ -1,0 +1,54 @@
+<launch>
+	<arg name="planner_status_topic" default="/planner_status"/>
+	<arg name="current_marker_topic" default="/current_marker"/>
+	<arg name="marker_list_topic" default="/marker_list"/>
+	<arg name="found_marker_list_topic" default="/found_marker_list"/>
+	<arg name="selected_mode_topic" default="/selected_mode"/>
+	<arg name="current_waypoint_topic" default="/current_waypoint"/>
+	<arg name="state_topic" default="/state"/>
+	<arg name="led_topic" default="/led_control"/>
+	<arg name="remove_current_marker_service" default="/remove_current_marker"/>
+	<arg name="publish_current_marker_service" default="/publish_current_marker"/>
+	<arg name="publish_search_waypoint_service" default="/publish_search_waypoint"/>
+	<arg name="through_next_gate_waypoint_service" default="/through_next_gate_waypoint"/>
+	<arg name="through_update_gate_waypoint_service" default="/through_update_gate_waypoint"/>
+	<arg name="circle_next_gate_waypoint_service" default="/circle_update_gate_waypoint"/>
+	<arg name="circle_update_gate_waypoint_service" default="/circle_update_gate_waypoint"/>
+	<arg name="plan_home_marker_service" default="/plan_home_marker"/>
+	<arg name="planner_enabled_service" default="/planner_enabled"/>
+	<arg name="planner_precision_service" default="/planner_precision"/>
+	<arg name="gnss_only_precision" default="0.25"/>
+	<arg name="marker_precision" default="1.5"/>
+	<arg name="gate_precision" default="0.25"/>
+	<arg name="teleop_enabled_service" default="/teleop_enabled"/>
+	<arg name="frequency" default="10"/>
+	<arg name="wait_at_marker_duration" default="-1"/>
+
+	<node pkg="wanderer_statemachine" name="wanderer_statemachine"
+	type="state_machine.py" output="screen" respawn="false">
+		<param name="planner_status_topic" value="$(arg planner_status_topic)"/>
+		<param name="current_marker_topic" value="$(arg current_marker_topic)"/>
+		<param name="marker_list_topic" value="$(arg marker_list_topic)"/>
+		<param name="found_marker_list_topic" value="$(arg found_marker_list_topic)"/>
+		<param name="selected_mode_topic" value="$(arg selected_mode_topic)"/>
+		<param name="current_waypoint_topic" value="$(arg current_waypoint_topic)"/>
+		<param name="state_topic" value="$(arg state_topic)"/>
+		<param name="led_topic" value="$(arg led_topic)"/>
+		<param name="remove_current_marker_service" value="$(arg remove_current_marker_service)"/>
+		<param name="publish_current_marker_service" value="$(arg publish_current_marker_service)"/>
+		<param name="publish_search_waypoint_service" value="$(arg publish_search_waypoint_service)"/>
+		<param name="through_next_gate_waypoint_service" value="$(arg through_next_gate_waypoint_service)"/>
+		<param name="through_update_gate_waypoint_service" value="$(arg through_update_gate_waypoint_service)"/>
+		<param name="circle_next_gate_waypoint_service" value="$(arg circle_next_gate_waypoint_service)"/>
+		<param name="circle_update_gate_waypoint_service" value="$(arg circle_update_gate_waypoint_service)"/>
+		<param name="plan_home_marker_service" value="$(arg plan_home_marker_service)"/>
+		<param name="planner_enabled_service" value="$(arg planner_enabled_service)"/>
+		<param name="planner_precision_service" value="$(arg planner_precision_service)"/>
+		<param name="gnss_only_precision" value="$(arg gnss_only_precision)"/>
+		<param name="marker_precision" value="$(arg marker_precision)"/>
+		<param name="gate_precision" value="$(arg gate_precision)"/>
+		<param name="teleop_enabled_service" value="$(arg teleop_enabled_service)"/>
+		<param name="frequency" value="$(arg frequency)"/>
+		<param name="wait_at_marker_duration" value="$(arg wait_at_marker_duration)"/>
+	</node>
+</launch>
